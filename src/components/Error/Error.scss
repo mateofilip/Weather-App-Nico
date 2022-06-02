@@ -1,0 +1,19 @@
+.Error {
+  margin: 5rem 2rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  img {
+    margin: 2rem;
+    width: 75%;
+
+    @media (min-width: 768px) {
+      width: 33%;
+    }
+  }
+
+  p {
+    color: var(--gray);
+  }
+}

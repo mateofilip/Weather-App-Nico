@@ -2,7 +2,7 @@ import './Aside.scss';
 
 export default function Aside() {
   return (
-    <aside className="Aside animate__animated animate__fadeInRight">
+    <aside className="Aside animate__animated animate__slideInRight">
       <nav>
         <ul>
           <li>

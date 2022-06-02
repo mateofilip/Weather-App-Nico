@@ -8,7 +8,7 @@ import {
 
 export default function Body(props) {
   return (
-    <div className="Body">
+    <div className="Body animate__animated animate__fadeInUp">
       <div className="main-container">
         <div>
           <img
