@@ -6,6 +6,22 @@ import { useState } from 'react';
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  function handleClick() {
+    if (!open) {
+      setOpen(!open);
+    } else {
+      document
+        .querySelector('.Aside')
+        .classList.remove('animate__slideInRight');
+
+      document.querySelector('.Aside').classList.add('animate__slideOutRight');
+
+      setTimeout(function () {
+        setOpen(!open);
+      }, 1000);
+    }
+  }
+
   return (
     <nav className="Navbar">
       <div className="icon">
@@ -17,9 +33,9 @@ export default function Navbar() {
 
       <button>
         {open ? (
-          <FaTimes onClick={() => setOpen(!open)} />
+          <FaTimes onClick={handleClick} />
         ) : (
-          <FaBars onClick={() => setOpen(!open)} />
+          <FaBars onClick={handleClick} />
         )}
       </button>
 
