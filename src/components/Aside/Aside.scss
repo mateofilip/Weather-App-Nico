@@ -30,6 +30,10 @@
         color: var(--dark-blue);
         margin: 5rem;
         font-size: 1.5em;
+
+        span {
+          color: var(--light-blue);
+        }
       }
     }
   }

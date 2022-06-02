@@ -5,9 +5,18 @@ export default function Aside() {
     <aside className="Aside animate__animated animate__fadeInRight">
       <nav>
         <ul>
-          <li>Blog</li>
-          <li>FAQ</li>
-          <li>About</li>
+          <li>
+            {' '}
+            <span>01.</span> Blog
+          </li>
+          <li>
+            {' '}
+            <span>02.</span> FAQ
+          </li>
+          <li>
+            {' '}
+            <span>03.</span> About
+          </li>
         </ul>
       </nav>
     </aside>

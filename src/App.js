@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Body from './components/Body/Body.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
+import Error from './components/Error/Error.jsx';
 import './App.scss';
 import 'animate.css';
 
@@ -13,12 +14,16 @@ export default function App() {
   const [weather, setWeather] = useState([]);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLongitude(position.coords.longitude);
-      setLatitude(position.coords.latitude);
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLongitude(position.coords.longitude);
+        setLatitude(position.coords.latitude);
+      });
 
-    getWeather(latitude, longitude);
+      getWeather(latitude, longitude);
+    } else {
+      alert('Geolocation is not supported by this browser');
+    }
   }, [latitude, longitude]);
 
   async function getWeather(latitude, longitude) {
@@ -35,16 +40,19 @@ export default function App() {
       minTemp: Math.round(weatherData.main.temp_min),
       feelsLike: Math.round(weatherData.main.feels_like),
       weather: weatherData.weather[0].main,
+      img: weatherData.weather[0].icon,
+      humidity: weatherData.main.humidity,
+      windSpeed: weatherData.wind.speed,
     };
 
     setWeather(weather);
-    console.log(weather);
+    console.log(weatherData);
   }
 
   return (
     <div className="App">
       <Navbar />
-      <Body weather={weather} />
+      {weather.temp ? <Body weather={weather} /> : <Error />}
     </div>
   );
 }
